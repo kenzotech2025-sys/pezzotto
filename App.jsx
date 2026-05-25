@@ -38,13 +38,23 @@ function chatMessage(text, mine = false) {
 }
 
 function AdBanner() {
+  useEffect(() => {
+    const banner = document.getElementById("ad-banner");
+    if (!banner || banner.querySelector("script[data-pezzotto-ad]")) return;
+
+    const script = document.createElement("script");
+    script.src = "https://pl29553257.effectivecpmnetwork.com/05/cb/79/05cb79d527ca731cb584213cd3fd6745.js";
+    script.async = true;
+    script.dataset.pezzottoAd = "true";
+    banner.appendChild(script);
+  }, []);
+
   return (
     <div
       id="ad-banner"
       className="my-4 flex min-h-20 w-full items-center justify-center border border-dashed border-amber-300/60 bg-amber-300/10 px-4 py-3 text-center text-sm font-bold text-amber-100"
     >
-      {/* <!-- Inserisci qui l'embed code del network pubblicitario (es. Adsterra) --> */}
-      Spazio pubblicitario
+      Pubblicita'
     </div>
   );
 }
